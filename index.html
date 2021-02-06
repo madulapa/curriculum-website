@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Stemnova Curriculum </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+        }
+
+        h3 {
+            font-weight: bolder;
+        }
+
+        h1 {
+            font-size: 3.5em;
+        }
+
+        #header {
+            background-color: #1A67C1;
+            color: white;
+            height: 220px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #header h1 {
+            padding-top: 50px;
+        }
+
+        #description {
+            background-color: #FDBF12;
+            height: 180px;
+            padding: 20px;
+            padding-left: 80px;
+            padding-right: 80px;
+            text-align: center;
+        }
+
+
+        #inventory {
+            padding-left: 60px;
+            margin: 20px;
+        }
+
+        #results {
+            margin: auto;
+            max-width: 700px;
+            position: absolute;
+            top: 70%;
+            transform: translateY(-50%);
+            transform: translateX(120%);
+        }
+
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .progress {
+            height: 60px;
+        }
+
+        #submit {
+            background-color: #1D2366;
+            color: white;
+            padding: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .progress #carbonEmissions {
+            background-color: #1D2366;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>Stemnova </h1>
+    </div>
+    <!--header-->
+    <div id="description">
+        <h3>Our Program </h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu sem elit. Proin rutrum risus
+            condimentum vulputate placerat. Integer pretium, diam eu posuere euismod, velit dolor placerat sem, sed
+            commodo mauris leo at nisi. Quisque faucibus ex non enim porttitor fermentum. Mauris venenatis velit a ante
+            iaculis, sit amet viverra quam convallis. Suspendisse nulla sem, accumsan non lorem nec, vehicula volutpat
+            turpis. Aliquam nec porttitor felis.</p>
+    </div>
+    <!--description-->
+    <div class="row">
+        <div id="inventory" class="column">
+            <h3>Inventory </h3>
+            <form id="inputs" onsubmit="calculateCommRating() & calculateBudget()">
+                <label for="coalPlant">Coal Plants:</label>
+                <input type="number" name="coalPlant" value=0><br>
+                <label for="oilPlant">Oil Plants:</label>
+                <input type="number" name="oilPlant" value=0><br>
+                <label for="naturalGasPlant">Natural Gas Plants:</label>
+                <input type="number" name="naturalGasPlant" value=0><br>
+                <label for="nuclearPlant">Nuclear Plants:</label>
+                <input type="number" name="nuclearPlant" value=0><br>
+                <label for="solarFarm">Solar Farms:</label>
+                <input type="number" name="solarFarm" value=0><br>
+                <label for="windTurbine">Wind Turbines:</label>
+                <input type="number" id="windTurbine" name="windTurbine" value=0><br>
+                <label for="geothermalEnergyPlant">Geothermal Energy Plants:</label>
+                <input type="number" id="geothermalEnergyPlant" name="geothermalEnergyPlant" value=0><br>
+                <label for="hydropowerPlant">Hydropower Plants:</label>
+                <input type="number" id="hydropowerPlant" name="hydropowerPlant" value=0><br>
+                <label for="solarPanel">Solar Panels:</label>
+                <input type="number" id="solarPanel" name="solarPanel" value=0><br>
+                <label for="recyclingPlant">Recycling Plants:</label>
+                <input type="number" id="recyclingPlant" name="recyclingPlant" value=0><br>
+                <label for="sanitaryLandfill">Sanitary Landfills:</label>
+                <input type="number" id="sanitaryLandfill" name="sanitaryLandfill" value=0><br>
+                <label for="incinerationPlant">Incineration Plants:</label>
+                <input type="number" id="incinerationPlant" name="incinerationPlant" value=0><br>
+                <label for="compostingPlant">Composting Plants:</label>
+                <input type="number" id="compostingPlant" name="compostingPlant" value=0><br>
+                <label for="resourceRecoveryPlant">Resource Recovery Plants:</label>
+                <input type="number" id="resourceRecoveryPlant" name="resourceRecoveryPlant" value=0><br>
+                <label for="busStops">Bus Stops:</label>
+                <input type="number" id="busStops" name="busStops" value=0><br>
+                <label for="bicycleLanes">Bicycle Lanes:</label>
+                <input type="number" id="bicycleLanes" name="bicycleLanes" value=0><br>
+                <label for="metroOrSubways">Metro/Subways:</label>
+                <input type="number" id="metroOrSubways" name="metroOrSubways" value=0><br>
+                <label for="roads">Roads:</label>
+                <input type="number" id="roads" name="roads" value=0><br>
+                <input id="submit" type="submit" value="Submit" >
+            </form>
+        </div>
+        <!--inventory-->
+
+        <div class="col-2 total-val">
+            <span id="total_value">0</span>
+            <span id="total_budget">0</span>
+          </div>
+
+        <div id="results" class="column">
+            <div class="progress" id="carbonEmissions">
+                <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    40%
+                </div>
+            </div>
+            <!--carbonEmissions-->
+            <br><br>
+            <div class="progress" id="communityRating">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    40%
+                </div>
+            </div>
+            <!--communityRating-->
+            <br><br>
+            <div class="progress" id="budget">
+                <div id="energy" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+                    style="width:40%">
+                    Energy
+                </div>
+                <div id= "waste" class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
+                    style="width:10%">
+                    Waste
+                </div>
+                <div id="transpo" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
+                    style="width:20%">
+                    Transportation
+                </div>
+            </div>
+            <!--budget-->
+        </div>
+        <!--results-->
+    </div>
+    <!--container-->
+</body>
+<script>
+    function calculateCommRating() {
+        var inputs = document.getElementById("inputs").elements;
+        var total = 50;
+        var ratingVals = [-2, -1, -2, -1, 4, 4, 2, 5, 3, 5, -5, -4, 5, 2, 7, 2, 5, 1];
+        for (i = 0; i < inputs.length-1; i++) {
+            
+            total += parseInt(inputs[i].value) * ratingVals[i];
+        
+
+        }
+        event.preventDefault();
+        $("#total_value").text(total);
+        $("#communityRating").css("width:", total.toString() + "%").text(total.toString() + " %");
+
+    }
+
+    function calculateBudget() {
+        var inputs = document.getElementById("inputs").elements;
+       console.log(inputs.length)
+        var total = 1190000000;
+        var energy = 0;
+        var waste = 0;
+        var transpo = 0;
+        var costs = [0.03, 0.21, 0.05, 0.02, 0.06, 0.05, 0.05, 0.01, 12000, 9000000, 84000000, 150000000, 5000000, 40000000, 10000, 80000, 600000000, 4000000];
+        for (i = 0; i < inputs.length-1; i++) {
+            if(i < 9){
+                energy += parseFloat(inputs[i].value) * costs[i];
+            }
+            else if(i < 14){
+                waste += parseFloat(inputs[i].value) * costs[i];
+            }
+            else if(i < 18){
+                transpo += parseFloat(inputs[i].value) * costs[i];
+            }
+            total -= parseFloat(inputs[i].value) * costs[i];
+        
+
+        }
+
+        event.preventDefault();
+        console.log(total);
+        $("#total_budget").text(total);
+        $("#energy").css("width:", energy.toString() + "%").text("$" + energy.toString());
+        $("#waste").css("width:", waste.toString() + "%").text("$" + waste.toString());
+        $("#transpo").css("width:", transpo.toString() + "%").text("$" + transpo.toString());
+    }
+    
+</script>
+
+</html>
