@@ -1,0 +1,92 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h3 {
+    font-weight: bolder;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+#header {
+    background-color:#FDBF12; 
+    color: white;
+    height: 700px;
+    width: 100%;
+    padding: 80px;
+    text-align: center;
+    /*background-image: url(./images/blurred-header.jpg);
+    background-size: 100% 150%; */
+
+
+}
+
+#header img {
+    height: 500px;
+    padding-top: 100px;
+}
+
+#description {
+    background-color: #1A67C1;
+    color: white;
+    height: 100%;
+    width: 101%;
+    padding-left: 80px;
+    padding-right: 80px;
+    text-align: center;
+    padding-top: 30px;
+    font-size: larger;
+}
+
+#results {
+    transform: translateY(20%);
+
+}
+
+.cols {
+    float: left;
+    width: 50%;
+}
+
+.content {
+    margin: 50px 100px;
+}
+
+.progress {
+    height: 60px;
+
+}
+
+.progress-bar {
+    color: black;
+    font-size: 1.5em;
+}
+
+#submit {
+    background-color: #1D2366;
+    color: white;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#title {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#key {
+    font-weight: 900;
+    border-style: solid;
+    border-color: #1D2366;
+    padding: 20px;
+    text-align: center;
+    margin: 50px;
+}
