@@ -23,6 +23,7 @@
             font-family: 'Noto Sans', sans-serif;
             margin: 0;
         }
+
         * {
             box-sizing: border-box;
         }
@@ -39,17 +40,14 @@
             background-color: #1A67C1;
             color: white;
             height: 700px;
+            width: 100%;
             padding: 20px;
             text-align: center;
             background-image: url(./images/blurred-header.jpg);
             background-size: 100% 150%;
-            
+
         }
 
-        /*#header h1 {
-            padding-top: 200px;
-            font-size: 5em;
-        }*/
         #header img {
             height: 500px;
             padding-top: 100px;
@@ -57,47 +55,36 @@
 
         #description {
             background-color: #FDBF12;
-            height: 280px;
-            padding: 20px;
+            height: 100%;
             padding-left: 80px;
             padding-right: 80px;
             text-align: center;
-            padding-top: 70px;
+            padding-top: 30px;
             font-size: larger;
         }
 
-
-        #inventory {
-            padding-left: 60px;
-            margin: 50px;
-            
-        }
-       
-
         #results {
-            margin: auto;
-            max-width: 700px;
-            position: absolute;
-            top: 130%;
-            transform: translateY(-70%);
-            transform: translateX(110%);
+            transform: translateY(20%);
+
         }
 
-
-        .column {
+        .cols {
             float: left;
             width: 50%;
         }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
+        .content {
+            margin: 50px 100px;
         }
 
         .progress {
             height: 60px;
+
+        }
+
+        .progress-bar {
+            color: black;
+            font-size: 1.5em;
         }
 
         #submit {
@@ -108,32 +95,53 @@
             padding-right: 10px;
         }
 
-        .progress #carbonEmissions {
-            background-color: #1D2366;
+        #title {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        #key {
+            font-weight: 900;
+            border-style: solid;
+            border-color: #1D2366;
+            padding: 20px;
+            text-align: center;
+            margin: 50px;
         }
     </style>
 
 </head>
 
 <body>
-    <div id="header">
-        
-        <img src = "./images/logo.png" alt="logo">
+    <div id="header" class="container-fluid">
+
+        <img src="./images/logo.png" alt="logo">
     </div>
     <!--header-->
-    <div id="description">
-        <h2><b>Our Program </b></h2>
-        <p>Welcome to the Exploring Climate Change City Tracker! This is the place you and your group will go to for
-            keeping track of all the amazing changes you’re implementing in your city! A few things to remember: use the
-            Inventory Sheet to decide which changes you’re investing in, and how drastic those changes will be. Also,
-            keep in mind your budget and carbon emissions limitations. Remember, Cityville citizens are trusting you to
-            turn their city into a sustainable, accessible, and environmentally-friendly home! As you enter your changes
-            into this tracker, pay special attention to the units of each item! Now, have fun and make some changes!</p>
+    <div id="description" class="row">
+        <div class="col-xs-12 center-block text-center">
+            <h2><b>Our Program </b></h2>
+            <br>
+            <p>Welcome to the Exploring Climate Change City Tracker! This is the place you and your group will go to for
+                keeping track of all the amazing changes you’re implementing in your city! A few things to remember: use
+                the
+                Inventory Sheet to decide which changes you’re investing in, and how drastic those changes will be.
+                Also,
+                keep in mind your budget and carbon emissions limitations. Remember, Cityville citizens are trusting you
+                to
+                turn their city into a sustainable, accessible, and environmentally-friendly home! As you enter your
+                changes
+                into this tracker, pay special attention to the units of each item! Now, have fun and make some changes!
+            </p>
+            <br>
+        </div>
     </div>
     <!--description-->
-    <div class="row">
-        <div id="inventory" class="column">
+    <div class="row content">
+        <div id="inventory" class="col-sm-12 col-lg-6">
             <h2><b>Inventory</b></h2>
+            <p>*Please do not leave any input empty, use 0 if the value is 0</p>
+            <p>**Minimum value that can be entered other than 0 is 20% of the maximum energy output</p>
             <form id="inputs" onsubmit="calculateCommRating() & calculateBudget() & calculateCO2()">
                 <br>
                 <h5><b>Energy Items (input in KWh)</b></h5>
@@ -187,7 +195,7 @@
             <span id="total_budget">0</span>
           </div>-->
 
-        <div id="results" class="column">
+        <div id="results" class="col-sm-12 col-lg-6">
             <h4>Carbon Emissions:</h4>
             <div class="progress">
                 <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" id="carbonEmissions"
@@ -201,7 +209,7 @@
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" id="communityRating"
                     role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                    50%
+                    50 points
                 </div>
             </div>
             <!--communityRating-->
@@ -210,22 +218,39 @@
             <div class="progress" id="budget">
                 <div id="energy" class="progress-bar bg-success progress-bar-striped progress-bar-animated"
                     role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                    Energy
+                   
                 </div>
                 <div id="waste" class="progress-bar bg-info progress-bar-striped progress-bar-animated"
                     role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                    Waste
+                    
                 </div>
                 <div id="transpo" class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                     role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                    Transportation
+                    
                 </div>
             </div>
             <!--budget-->
+            <div id="key">
+                <p>
+                    Energy:
+                    <span id="energyValue" class="text-success">$0</span>
+                </p>
+                <p>
+                    Waste:
+                    <span id="wasteValue" class="text-info">$0</span>
+                </p>
+                <p>
+                    Transportation:
+                    <span id="transpoValue" class="text-danger">$0</span>
+                </p>
+            </div>
+            <!--key-->
         </div>
         <!--results-->
+
     </div>
     <!--container-->
+    
 </body>
 <script>
     function calculateCommRating() {
@@ -254,12 +279,12 @@
         if (total > 100) total = 100;
         event.preventDefault();
         $('#communityRating').width(total + "%").attr('aria-valuenow', total);
-        $('#communityRating').text(total.toString() + " %");
+        $('#communityRating').text(total.toString() + " points");
     }
 
     function calculateBudget() {
         var inputs = document.getElementById("inputs").elements;
-        //(inputs.length)
+    
         var total = 1190000000;
         var energy = 0;
         var waste = 0;
@@ -288,17 +313,19 @@
         var transpoWidth = transpo / 1190000000 * 100;
 
         event.preventDefault();
-        //console.log(total);
         $("#total_budget").text(total);
-        //$("#energy").css("width:", energy.toString() + "%").text("$" + energy.toString());
+
         $('#energy').width(energyWidth + "%").attr('aria-valuenow', energyWidth);
         $('#energy').text("$" + energy.toString());
-        // $("#waste").css("width:", waste.toString() + "%").text("$" + waste.toString());
+        $('#energyValue').text("$" + energy.toLocaleString('en-US').toString());
+
         $('#waste').width(wasteWidth + "%").attr('aria-valuenow', wasteWidth);
         $('#waste').text("$" + waste.toString());
-        //$("#transpo").css("width:", transpo.toString() + "%").text("$" + transpo.toString());
+        $('#wasteValue').text("$" + waste.toLocaleString('en-US').toString());
+
         $('#transpo').width(transpoWidth + "%").attr('aria-valuenow', transpoWidth);
         $('#transpo').text("$" + transpo.toString());
+        $('#transpoValue').text("$" + transpo.toLocaleString('en-US').toString());
     }
 
     function calculateCO2() {
@@ -324,9 +351,9 @@
 
         var ghg = [1.8, 1.9, 1.0, 0.02, 0.10, 0.02, 0.08, 0.05, 0.08, 0.75, 450000000, 0.85, 0.7, 0.9, 0.67, 0.9, 0.5];
         var wasteEmissions = inputs[10].value * ghg[10];
-        console.log(wasteEmissions);
+        
         var totalEmissionsWithoutWaste = 7727280000 - wasteEmissions;
-        console.log(totalEmissionsWithoutWaste);
+        
         for (let i = 0; i < inputs.length - 1; i++) {
             //energy    
             if (i <= 8) {
@@ -338,7 +365,7 @@
                     continue;
                 else {
                     var num = inputs[i].value;
-                    console.log("num", num);
+                    
                     while (num > 0) {
                         wasteEmissions *= ghg[i];
                         num--;
@@ -355,14 +382,38 @@
 
         }
         var total = wasteEmissions + totalEmissionsWithoutWaste;
-        console.log("total waste: ", totalEmissionsWithoutWaste);
-        var totalPercent = parseInt(total / 7727280000 * 100);
+    //console.log("total waste: ", totalEmissionsWithoutWaste);
+        var totalPercent = parseInt((total / 7727280000) * 100);
 
 
         event.preventDefault();
         $('#carbonEmissions').width(totalPercent + "%").attr('aria-valuenow', totalPercent);
-        $('#carbonEmissions').text(total.toString() + " lbs of C");
+        $('#carbonEmissions').text(total.toLocaleString('en-US').toString() + " lbs of C");
 
+    }
+
+    function CommaFormatted(amount) {
+        var delimiter = ","; // replace comma if desired
+        var a = amount.split('.', 2)
+        var d = a[1];
+        var i = parseInt(a[0]);
+        if (isNaN(i)) { return ''; }
+        var minus = '';
+        if (i < 0) { minus = '-'; }
+        i = Math.abs(i);
+        var n = new String(i);
+        var a = [];
+        while (n.length > 3) {
+            var nn = n.substr(n.length - 3);
+            a.unshift(nn);
+            n = n.substr(0, n.length - 3);
+        }
+        if (n.length > 0) { a.unshift(n); }
+        n = a.join(delimiter);
+        if (d.length < 1) { amount = n; }
+        else { amount = n + '.' + d; }
+        amount = minus + amount;
+        return amount;
     }
 </script>
 
