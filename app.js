@@ -1,4 +1,5 @@
 function calculateCommRating() {
+    //for any amount of the energy sources, same change to comm rating
     var inputs = document.getElementById("inputs").elements;
     var total = 50;
     var numPlants = 0;
@@ -8,13 +9,15 @@ function calculateCommRating() {
 
     for (i = 0; i < inputs.length - 1; i++) {
 
-        if (i <= 7) {
-            numPlants = inputs[i].value / minEnergyVals[i];
+        if (i <= 8) {
+            /*numPlants = inputs[i].value / minEnergyVals[i];
             console.log("num plants", numPlants);
             if (numPlants <= 0)
                 continue;
             else
-                total += parseInt(numPlants) * ratingVals[i];
+                total += parseInt(numPlants) * ratingVals[i];*/
+            if (inputs[i].value != 0)
+                total += ratingVals[i];
         }
         else
             total += parseInt(inputs[i].value) * ratingVals[i];
@@ -74,6 +77,10 @@ function calculateBudget() {
 }
 
 function calculateCO2() {
+    //for energy: add it from 0 
+    //for waste: decrease from 450000000
+    //for transportation: starting val is 77280000
+
     var inputs = document.getElementById("inputs").elements;
     //0 - 8 == energy
     //9 - 13 = waste
@@ -96,13 +103,17 @@ function calculateCO2() {
 
     var ghg = [1.8, 1.9, 1.0, 0.02, 0.10, 0.02, 0.08, 0.05, 0.08, 0.75, 450000000, 0.85, 0.7, 0.9, 0.67, 0.9, 0.5];
     var wasteEmissions = inputs[10].value * ghg[10];
-    
+
     var totalEmissionsWithoutWaste = 7727280000 - wasteEmissions;
-    
+    var initialEnergyEmissions = 7200000000;
+    var energyEmissions = 0;
+    var transpoEmissions = 77280000;
+
     for (let i = 0; i < inputs.length - 1; i++) {
         //energy    
         if (i <= 8) {
-            totalEmissionsWithoutWaste += inputs[i].value * ghg[i];
+            energyEmissions += inputs[i].value * ghg[i];
+            initialEnergyEmissions -= inputs[i].value * ghg[0];
         }
         //waste
         else if (i > 9 && i <= 13) {
@@ -110,24 +121,25 @@ function calculateCO2() {
                 continue;
             else {
                 var num = inputs[i].value;
-                
+
                 while (num > 0) {
                     wasteEmissions *= ghg[i];
                     num--;
                 }
             }
         }
+        //transportation
         else if (i > 13 && i < 17) {
             var num = inputs[i].value;
             while (num > 0) {
-                totalEmissionsWithoutWaste *= ghg[i];
+                transpoEmissions *= ghg[i];
                 num--;
             }
         }
 
     }
-    var total = wasteEmissions + totalEmissionsWithoutWaste;
-//console.log("total waste: ", totalEmissionsWithoutWaste);
+    var total = wasteEmissions + energyEmissions + initialEnergyEmissions + transpoEmissions;
+    //console.log("total waste: ", totalEmissionsWithoutWaste);
     var totalPercent = parseInt((total / 7727280000) * 100);
 
 
